@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+  <title>AI-Powered Learning Analytics Dashboard</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.8.1/prop-types.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+  <script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/recharts/2.12.7/Recharts.min.js"></script> -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html, body {
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+    .filter-blur {
+      -webkit-filter: blur(4px);
+      filter: blur(4px);
+    }
+    .backdrop-blur {
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+    }
+    .no-select {
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    .chatbox {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 350px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+    .chatbox-header {
+      background: #3b82f6;
+      color: white;
+      padding: 10px;
+      border-radius: 8px 8px 0 0;
+      font-weight: bold;
+    }
+    .chatbox-body {
+      max-height: 300px;
+      overflow-y: auto;
+      padding: 10px;
+    }
+    .chatbox-input {
+      display: flex;
+      border-top: 1px solid #e5e7eb;
+    }
+    .chatbox-input input {
+      flex: 1;
+      border: none;
+      padding: 10px;
+      outline: none;
+      border-radius: 0 0 0 8px;
+    }
+    .chatbox-input button {
+      background: #3b82f6;
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 0 0 8px 0;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <div id="root"></div>
+  <script type="text/babel">
+    const embeddedCsv = `Student_ID,Course_Name,Education_Level,Age,Learning_Style,Time_Spent_on_Videos,Quiz_Attempts,Quiz_Scores,Forum_Participation,Assignment_Completion_Rate,Final_Exam_Score,Engagement_Level,Feedback_Score,Dropout_Likelihood
+S00001,Data Science,Undergraduate,20,Visual,120,5,85,10,90,88,High,4.5,No
+S00002,Machine Learning,Graduate,22,Auditory,100,3,70,5,80,75,Medium,3.8,Yes
+S00003,Data Science,Undergraduate,19,Kinesthetic,110,4,80,8,85,82,High,4.2,No
+S00004,Machine Learning,Graduate,24,Reading/Writing,90,6,65,3,75,70,Low,3.5,Yes
+S00005,Statistics,Undergraduate,21,Visual,130,5,90,12,95,92,High,4.7,No
+S00006,Data Science,Undergraduate,20,Auditory,115,4,78,7,88,85,Medium,4.0,No
+S00007,Machine Learning,Graduate,23,Kinesthetic,95,3,60,4,70,65,Low,3.2,Yes
+S00008,Statistics,Undergraduate,18,Reading/Writing,105,5,82,9,90,87,High,4.4,No
+S00009,Data Science,Graduate,25,Visual,125,6,88,11,92,90,High,4.6,No
+S00010,Machine Learning,Undergraduate,22,Auditory,100,4,72,6,80,76,Medium,3.9,Yes
+S00011,Statistics,Graduate,26,Kinesthetic,110,5,75,8,85,80,Medium,4.1,No
+S00012,Data Science,Undergraduate,19,Reading/Writing,120,4,83,10,90,89,High,4.3,No`;
+
+    function App() {
+      const [data, setData] = React.useState([]);
+      const [filteredStudentData, setFilteredStudentData] = React.useState([]);
+      const [filteredManagementData, setFilteredManagementData] = React.useState([]);
+      const [studentIdFilter, setStudentIdFilter] = React.useState('');
+      const [learningStyleFilter, setLearningStyleFilter] = React.useState('');
+      const [ageFilter, setAgeFilter] = React.useState('');
+      const [courseFilter, setCourseFilter] = React.useState('');
+      const [educationLevelFilter, setEducationLevelFilter] = React.useState('');
+      const [engagementFilter, setEngagementFilter] = React.useState('');
+      const [dropoutFilter, setDropoutFilter] = React.useState('');
+      const [feedbackScoreFilter, setFeedbackScoreFilter] = React.useState('');
+      const [isLoading, setIsLoading] = React.useState(true);
+      const [model, setModel] = React.useState(null);
+      const [tab, setTab] = React.useState('student');
+
+      React.useEffect(() => {
+        console.log('Starting CSV parse');
+        Papa.parse(embeddedCsv, {
+          header: true,
+          skipEmptyLines: true,
+          transformHeader: header => header.trim().replace(/^"|"$/g, ''),
+          transform: (value, header) => {
+            let cleaned = value.trim().replace(/^"|"$/g, '');
+            if (['Age', 'Time_Spent_on_Videos', 'Quiz_Attempts', 'Quiz_Scores', 'Forum_Participation', 'Assignment_Completion_Rate', 'Final_Exam_Score', 'Feedback_Score'].includes(header)) {
+              return isNaN(cleaned) || cleaned === '' ? 0 : Number(cleaned);
+            }
+            if (header === 'Dropout_Likelihood') {
+              return cleaned.toLowerCase() === 'yes' ? 1 : cleaned.toLowerCase() === 'no' ? 0 : cleaned;
+            }
+            return cleaned;
+          },
+          complete: results => {
+            console.log('CSV parsed, rows:', results.data.length);
+            const enhancedData = results.data.map(row => {
+              const forumLevel = row.Forum_Participation > 8 ? 'High' : row.Forum_Participation > 4 ? 'Medium' : 'Low';
+              console.log('Row:', row.Student_ID, 'Forum_Activity_Level:', forumLevel);
+              return {
+                ...row,
+                Quiz_Scores: row.Quiz_Scores || 0,
+                Final_Exam_Score: row.Final_Exam_Score || 0,
+                Dropout_Likelihood: row.Dropout_Likelihood === 1 || row.Dropout_Likelihood === 0 ? row.Dropout_Likelihood : 0,
+                Learning_Pace: (row.Time_Spent_on_Videos / (row.Assignment_Completion_Rate || 1)).toFixed(2),
+                Engagement_Consistency: ((row.Forum_Participation + row.Quiz_Attempts) / 2).toFixed(2),
+                Video_Engagement_Peak: row.Time_Spent_on_Videos > 120 ? 'Evening' : 'Daytime',
+                Forum_Activity_Level: forumLevel || 'Low'
+              };
+            });
+            console.log('Enhanced data created, rows:', enhancedData.length);
+            setData(enhancedData);
+            setFilteredStudentData(enhancedData);
+            setFilteredManagementData(enhancedData);
+            console.log('Starting model training');
+            trainModel(enhancedData);
+            setIsLoading(false);
+            console.log('Loading complete');
+          },
+          error: err => {
+            console.error('Papa Parse error:', err);
+            setIsLoading(false);
+          }
+        });
+      }, []);
+
+      const trainModel = async (data) => {
+        try {
+          console.log('Training TensorFlow model with', data.length, 'rows');
+          const xs = data.map(row => [
+            row.Quiz_Scores / 100,
+            row.Final_Exam_Score / 100,
+            row.Engagement_Level === 'High' ? 1 : row.Engagement_Level === 'Medium' ? 0.5 : 0,
+            row.Learning_Pace / 100,
+            row.Engagement_Consistency / 100,
+            row.Feedback_Score / 5,
+            row.Age / 30,
+            row.Forum_Participation / 20
+          ]);
+          const ys = data.map(row => [row.Dropout_Likelihood]);
+
+          const xsTensor = tf.tensor2d(xs);
+          const ysTensor = tf.tensor2d(ys);
+
+          const model = tf.sequential();
+          model.add(tf.layers.dense({ units: 20, activation: 'relu', inputShape: [8] }));
+          model.add(tf.layers.dense({ units: 10, activation: 'relu' }));
+          model.add(tf.layers.dense({ units: 1, activation: 'sigmoid' }));
+          model.compile({ optimizer: 'adam', loss: 'binaryCrossentropy', metrics: ['accuracy'] });
+
+          await model.fit(xsTensor, ysTensor, {
+            epochs: 50,
+            batchSize: 32,
+            callbacks: {
+              onEpochEnd: (epoch, logs) => console.log(`Epoch ${epoch}: loss = ${logs.loss.toFixed(4)}`)
+            }
+          });
+
+          setModel(model);
+          xsTensor.dispose();
+          ysTensor.dispose();
+          console.log('TensorFlow model training complete');
+        } catch (err) {
+          console.error('Model training error:', err);
+        }
+      };
+
+      const predictBarriers = (student) => {
+        if (!model) return { probability: 0, barriers: [] };
+        const input = tf.tensor2d([[
+          student.Quiz_Scores / 100,
+          student.Final_Exam_Score / 100,
+          student.Engagement_Level === 'High' ? 1 : student.Engagement_Level === 'Medium' ? 0.5 : 0,
+          student.Learning_Pace / 100,
+          student.Engagement_Consistency / 100,
+          student.Feedback_Score / 5,
+          student.Age / 30,
+          student.Forum_Participation / 20
+        ]]);
+        const prediction = model.predict(input);
+        const probability = prediction.dataSync()[0];
+        input.dispose();
+        prediction.dispose();
+
+        const barriers = [];
+        if (probability > 0.7) barriers.push('High dropout risk');
+        if (student.Quiz_Scores < 60) barriers.push('Low quiz performance');
+        if (student.Engagement_Consistency < 20) barriers.push('Inconsistent engagement');
+        if (student.Learning_Pace > 10) barriers.push('Slow learning pace');
+        if (student.Feedback_Score < 3.5) barriers.push('Low feedback score');
+        if (student.Age < 20) barriers.push('Younger age may need more guidance');
+        if (student.Forum_Activity_Level === 'Low') barriers.push('Low forum participation');
+
+        return { probability: (probability * 100).toFixed(1), barriers };
+      };
+
+      const getRecommendations = (student, barriers) => {
+        const recommendations = [];
+        if (student.Learning_Style === 'Visual') {
+          recommendations.push('Use video tutorials, infographics, and mind maps. Study in the evening for peak focus.');
+        } else if (student.Learning_Style === 'Auditory') {
+          recommendations.push('Listen to podcasts or join discussion groups. Post in forums to boost engagement.');
+        } else if (student.Learning_Style === 'Kinesthetic') {
+          recommendations.push('Engage in hands-on projects or simulations. Schedule short study sessions.');
+        } else if (student.Learning_Style === 'Reading/Writing') {
+          recommendations.push('Write summaries or read textbooks. Contribute to forums for better engagement.');
+        }
+        if (barriers.includes('Low quiz performance')) {
+          recommendations.push('Take additional practice quizzes and review mistakes.');
+        }
+        if (barriers.includes('Inconsistent engagement')) {
+          recommendations.push('Set a consistent study schedule with regular breaks.');
+        }
+        if (barriers.includes('Slow learning pace')) {
+          recommendations.push('Break study sessions into shorter, focused intervals.');
+        }
+        if (barriers.includes('High dropout risk')) {
+          recommendations.push('Connect with a mentor or academic advisor.');
+        }
+        if (barriers.includes('Low feedback score')) {
+          recommendations.push('Seek feedback from instructors and peers.');
+        }
+        if (barriers.includes('Younger age may need more guidance')) {
+          recommendations.push('Join a peer study group for additional support.');
+        }
+        if (barriers.includes('Low forum participation')) {
+          recommendations.push('Increase forum activity by posting weekly.');
+        }
+        if (student.Video_Engagement_Peak === 'Evening') {
+          recommendations.push('Schedule video-based study between 6-8 PM.');
+        }
+        return recommendations;
+      };
+
+      React.useEffect(() => {
+        console.log('Student filter updated:', { studentIdFilter, learningStyleFilter, ageFilter });
+        const filtered = data.filter(row =>
+          (studentIdFilter === '' || row.Student_ID.toLowerCase().includes(studentIdFilter.toLowerCase())) &&
+          (learningStyleFilter === '' || row.Learning_Style === learningStyleFilter) &&
+          (ageFilter === '' || (
+            ageFilter === '18-20' && row.Age >= 18 && row.Age <= 20 ||
+            ageFilter === '21-23' && row.Age >= 21 && row.Age <= 23 ||
+            ageFilter === '24+' && row.Age >= 24
+          ))
+        );
+        console.log('Filtered student data:', filtered.length, 'rows');
+        setFilteredStudentData(filtered);
+      }, [studentIdFilter, learningStyleFilter, ageFilter, data]);
+
+      React.useEffect(() => {
+        console.log('Management filter updated:', { courseFilter, educationLevelFilter, engagementFilter, dropoutFilter, feedbackScoreFilter });
+        const filtered = data.filter(row =>
+          (courseFilter === '' || row.Course_Name === courseFilter) &&
+          (educationLevelFilter === '' || row.Education_Level === educationLevelFilter) &&
+          (engagementFilter === '' || row.Engagement_Level === engagementFilter) &&
+          (dropoutFilter === '' || row.Dropout_Likelihood === (dropoutFilter === 'Yes' ? 1 : 0)) &&
+          (feedbackScoreFilter === '' || (
+            feedbackScoreFilter === 'Low' && row.Feedback_Score < 3.5 ||
+            feedbackScoreFilter === 'Medium' && row.Feedback_Score >= 3.5 && row.Feedback_Score < 4.0 ||
+            feedbackScoreFilter === 'High' && row.Feedback_Score >= 4.0
+          ))
+        );
+        console.log('Filtered management data:', filtered.length, 'rows');
+        setFilteredManagementData(filtered);
+      }, [courseFilter, educationLevelFilter, engagementFilter, dropoutFilter, feedbackScoreFilter, data]);
+
+      const aggregateByCourse = () => {
+        const grouped = filteredManagementData.reduce((acc, row) => {
+          const course = row.Course_Name;
+          if (!acc[course]) {
+            acc[course] = { count: 0, totalQuiz: 0, totalDropout: 0, totalPace: 0, totalConsistency: 0, high: 0, medium: 0, low: 0, totalForum: 0 };
+          }
+          acc[course].count += 1;
+          acc[course].totalQuiz += row.Quiz_Scores;
+          acc[course].totalDropout += row.Dropout_Likelihood;
+          acc[course].totalPace += Number(row.Learning_Pace);
+          acc[course].totalConsistency += Number(row.Engagement_Consistency);
+          acc[course].totalForum += row.Forum_Participation;
+          if (row.Engagement_Level === 'High') acc[course].high += 1;
+          if (row.Engagement_Level === 'Medium') acc[course].medium += 1;
+          if (row.Engagement_Level === 'Low') acc[course].low += 1;
+          return acc;
+        }, {});
+        return Object.keys(grouped).map(course => ({
+          Course_Name: course,
+          Avg_Quiz_Score: (grouped[course].totalQuiz / grouped[course].count).toFixed(1),
+          Dropout_Rate: ((grouped[course].totalDropout / grouped[course].count) * 100).toFixed(1),
+          Avg_Learning_Pace: (grouped[course].totalPace / grouped[course].count).toFixed(1),
+          Avg_Engagement_Consistency: (grouped[course].totalConsistency / grouped[course].count).toFixed(1),
+          High_Engagement: grouped[course].high,
+          Medium_Engagement: grouped[course].medium,
+          Low_Engagement: grouped[course].low,
+          Avg_Forum_Participation: (grouped[course].totalForum / grouped[course].count).toFixed(1)
+        }));
+      };
+
+      if (isLoading) {
+        return (
+          <div className="flex justify-center items-center h-screen">
+            <p className="text-xl text-gray-600">Loading data and training model...</p>
+          </div>
+        );
+      }
+
+      return (
+        <div className="container mx-auto p-4">
+          <h1 className="text-3xl font-bold mb-4 text-center">AI-Powered Learning Analytics Dashboard</h1>
+          <div className="flex justify-center mb-4">
+            <button
+              className={`px-4 py-2 mx-2 rounded ${tab === 'student' ? 'bg-blue-500 text-white' : 'bg-gray-200'} no-select`}
+              onClick={() => setTab('student')}
+            >
+              Student Dashboard
+            </button>
+            <button
+              className={`px-4 py-2 mx-2 rounded ${tab === 'management' ? 'bg-blue-500 text-white' : 'bg-gray-200'} no-select`}
+              onClick={() => setTab('management')}
+            >
+              Management Dashboard
+            </button>
+          </div>
+          {tab === 'student' && (
+            <div>
+              <h2 className="text-2xl font-semibold mb-4">Student Insights</h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                <input
+                  type="text"
+                  placeholder="Enter Student ID (e.g., S00001)"
+                  value={studentIdFilter}
+                  onChange={e => setStudentIdFilter(e.target.value)}
+                  className="border p-2 rounded"
+                />
+                <select
+                  value={learningStyleFilter}
+                  onChange={e => setLearningStyleFilter(e.target.value)}
+                  className="border p-2 rounded"
+                >
+                  <option value="">All Learning Styles</option>
+                  {[...new Set(data.map(row => row.Learning_Style))].map(style => (
+                    <option key={style} value={style}>{style}</option>
+                  ))}
+                </select>
+                <select
+                  value={ageFilter}
+                  onChange={e => setAgeFilter(e.target.value)}
+                  className="border p-2 rounded"
+                >
+                  <option value="">All Ages</option>
+                  <option value="18-20">18-20</option>
+                  <option value="21-23">21-23</option>
+                  <option value="24+">24+</option>
+                </select>
+              </div>
+              {filteredStudentData.length > 0 ? (
+                filteredStudentData.slice(0, 1).map(student => {
+                  const { probability, barriers } = predictBarriers(student);
+                  return (
+                    <div key={student.Student_ID} className="bg-white p-4 rounded shadow backdrop-blur">
+                      <h3 className="text-xl font-bold">Student: {student.Student_ID}</h3>
+                      <p>Course: {student.Course_Name}</p>
+                      <p>Education Level: {student.Education_Level}</p>
+                      <p>Age: {student.Age}</p>
+                      <p>Engagement Level: {student.Engagement_Level}</p>
+                      <p>Learning Style: {student.Learning_Style}</p>
+                      <p>Learning Pace: {student.Learning_Pace}</p>
+                      <p>Engagement Consistency: {student.Engagement_Consistency}</p>
+                      <p>Feedback Score: {student.Feedback_Score}</p>
+                      <p>Forum Activity: {student.Forum_Activity_Level}</p>
+                      <p>Video Engagement Peak: {student.Video_Engagement_Peak}</p>
+                      <div className="mt-4">
+                        <h4 className="text-lg font-semibold">AI-Predicted Barriers</h4>
+                        <p className="text-red-500">Dropout Risk: {probability}%</p>
+                        {barriers.length > 0 ? (
+                          <ul className="list-disc pl-5">
+                            {barriers.map((barrier, index) => (
+                              <li key={index}>{barrier}</li>
+                            ))}
+                          </ul>
+                        ) : (
+                          <p className="text-green-500">No significant barriers detected.</p>
+                        )}
+                      </div>
+                      <div className="mt-4">
+                        <h4 className="text-lg font-semibold">Personalized Recommendations</h4>
+                        <ul className="list-disc pl-5">
+                          {getRecommendations(student, barriers).map((rec, index) => (
+                            <li key={index}>{rec}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      <Chatbox role="student" studentData={student} data={data} />
+                    </div>
+                  );
+                })
+              ) : (
+                <p className="text-red-500">No student found with ID: {studentIdFilter}</p>
+              )}
+            </div>
+          )}
+          {tab === 'management' && (
+            <div>
+              <h2 className="text-2xl font-semibold mb-4">Management Insights</h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                <select
+                  value={courseFilter}
+                  onChange={e => setCourseFilter(e.target.value)}
+                  className="border p-2 rounded"
+                >
+                  <option value="">All Courses</option>
+                  {[...new Set(data.map(row => row.Course_Name))].map(course => (
+                    <option key={course} value={course}>{course}</option>
+                  ))}
+                </select>
+                <select
+                  value={educationLevelFilter}
+                  onChange={e => setEducationLevelFilter(e.target.value)}
+                  className="border p-2 rounded"
+                >
+                  <option value="">All Education Levels</option>
+                  {[...new Set(data.map(row => row.Education_Level))].map(level => (
+                    <option key={level} value={level}>{level}</option>
+                  ))}
+                </select>
+                <select
+                  value={engagementFilter}
+                  onChange={e => setEngagementFilter(e.target.value)}
+                  className="border p-2 rounded"
+                >
+                  <option value="">All Engagement Levels</option>
+                  {[...new Set(data.map(row => row.Engagement_Level))].map(level => (
+                    <option key={level} value={level}>{level}</option>
+                  ))}
+                </select>
+                <select
+                  value={dropoutFilter}
+                  onChange={e => setDropoutFilter(e.target.value)}
+                  className="border p-2 rounded"
+                >
+                  <option value="">All Dropout Likelihoods</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+                <select
+                  value={feedbackScoreFilter}
+                  onChange={e => setFeedbackScoreFilter(e.target.value)}
+                  className="border p-2 rounded"
+                >
+                  <option value="">All Feedback Scores</option>
+                  <option value="Low">Low (&lt;3.5)</option>
+                  <option value="Medium">Medium (3.5-4.0)</option>
+                  <option value="High">High (≥4.0)</option>
+                </select>
+              </div>
+              <div className="bg-white p-4 rounded shadow mt-4 backdrop-blur">
+                <h3 className="text-lg font-semibold">AI Insights</h3>
+                <p>
+                  The course with the highest predicted dropout risk is{' '}
+                  {aggregateByCourse().reduce((max, course) => Number(course.Dropout_Rate) > Number(max.Dropout_Rate) ? course : max, aggregateByCourse()[0]).Course_Name}, 
+                  with a dropout rate of{' '}
+                  {aggregateByCourse().reduce((max, course) => Number(course.Dropout_Rate) > Number(max.Dropout_Rate) ? course : max, aggregateByCourse()[0]).Dropout_Rate}%.
+                  Forum activity is lowest in Machine Learning; encourage weekly discussion prompts.
+                </p>
+              </div>
+              <Chatbox role="management" studentData={null} data={data} />
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    try {
+      const root = ReactDOM.createRoot(document.getElementById('root'));
+      root.render(<App />);
+    } catch (err) {
+      console.error('ReactDOM rendering error:', err);
+    }
+  </script>
+  <script src="chatbot.js" type="text/babel" defer></script>
+</body>
+</html>

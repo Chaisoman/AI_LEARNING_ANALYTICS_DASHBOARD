@@ -1,0 +1,255 @@
+2025-07-29 17:21:38,364 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-29 17:21:38,438 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-29 17:21:38,891 - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-29 17:21:55,922 - WARNING -  * Debugger is active!
+2025-07-29 17:21:56,109 - INFO -  * Debugger PIN: 128-884-529
+2025-07-29 17:21:59,259 - INFO - 127.0.0.1 - - [29/Jul/2025 17:21:59] "GET / HTTP/1.1" 200 -
+2025-07-29 17:22:27,316 - INFO - 127.0.0.1 - - [29/Jul/2025 17:22:27] "GET /student HTTP/1.1" 200 -
+2025-07-29 17:22:49,243 - INFO - Calling OpenAI with prompt: Provide study tips for a student with learning style Reading/Writing and performance metrics: {'Student_ID': 'S00003', 'Age': 20, 'Gender': 'Female', 'Education_Level': 'Undergraduate', 'Course_Name': 'Python Basics', 'Time_Spent_on_Videos': 217, 'Quiz_Attempts': 2, 'Quiz_Scores': 55, 'Forum_Participation': 2, 'Assignment_Completion_Rate': 67, 'Engagement_Level': 'Medium', 'Final_Exam_Score': 45, 'Learning_Style': 'Reading/Writing', 'Feedback_Score': 1, 'Dropout_Likelihood': 'No'}, context: {'Student_ID': 'S00003', 'Age': 20, 'Gender': 'Female', 'Education_Level': 'Undergraduate', 'Course_Name': 'Python Basics', 'Time_Spent_on_Videos': 217, 'Quiz_Attempts': 2, 'Quiz_Scores': 55, 'Forum_Participation': 2, 'Assignment_Completion_Rate': 67, 'Engagement_Level': 'Medium', 'Final_Exam_Score': 45, 'Learning_Style': 'Reading/Writing', 'Feedback_Score': 1, 'Dropout_Likelihood': 'No'}
+2025-07-29 17:22:56,472 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:22:56,473 - INFO - Retrying request to /chat/completions in 0.453792 seconds
+2025-07-29 17:22:57,604 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:22:57,605 - INFO - Retrying request to /chat/completions in 0.907709 seconds
+2025-07-29 17:22:58,922 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:23:02,982 - INFO - Calling OpenAI with prompt: Provide study tips for a student with learning style Reading/Writing and performance metrics: {'Student_ID': 'S00003', 'Age': 20, 'Gender': 'Female', 'Education_Level': 'Undergraduate', 'Course_Name': 'Python Basics', 'Time_Spent_on_Videos': 217, 'Quiz_Attempts': 2, 'Quiz_Scores': 55, 'Forum_Participation': 2, 'Assignment_Completion_Rate': 67, 'Engagement_Level': 'Medium', 'Final_Exam_Score': 45, 'Learning_Style': 'Reading/Writing', 'Feedback_Score': 1, 'Dropout_Likelihood': 'No'}, context: {'Student_ID': 'S00003', 'Age': 20, 'Gender': 'Female', 'Education_Level': 'Undergraduate', 'Course_Name': 'Python Basics', 'Time_Spent_on_Videos': 217, 'Quiz_Attempts': 2, 'Quiz_Scores': 55, 'Forum_Participation': 2, 'Assignment_Completion_Rate': 67, 'Engagement_Level': 'Medium', 'Final_Exam_Score': 45, 'Learning_Style': 'Reading/Writing', 'Feedback_Score': 1, 'Dropout_Likelihood': 'No'}
+2025-07-29 17:23:03,431 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:23:03,432 - INFO - Retrying request to /chat/completions in 0.399193 seconds
+2025-07-29 17:23:04,207 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:23:04,208 - INFO - Retrying request to /chat/completions in 0.948454 seconds
+2025-07-29 17:23:05,561 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:23:09,564 - INFO - Calling OpenAI with prompt: Provide study tips for a student with learning style Reading/Writing and performance metrics: {'Student_ID': 'S00003', 'Age': 20, 'Gender': 'Female', 'Education_Level': 'Undergraduate', 'Course_Name': 'Python Basics', 'Time_Spent_on_Videos': 217, 'Quiz_Attempts': 2, 'Quiz_Scores': 55, 'Forum_Participation': 2, 'Assignment_Completion_Rate': 67, 'Engagement_Level': 'Medium', 'Final_Exam_Score': 45, 'Learning_Style': 'Reading/Writing', 'Feedback_Score': 1, 'Dropout_Likelihood': 'No'}, context: {'Student_ID': 'S00003', 'Age': 20, 'Gender': 'Female', 'Education_Level': 'Undergraduate', 'Course_Name': 'Python Basics', 'Time_Spent_on_Videos': 217, 'Quiz_Attempts': 2, 'Quiz_Scores': 55, 'Forum_Participation': 2, 'Assignment_Completion_Rate': 67, 'Engagement_Level': 'Medium', 'Final_Exam_Score': 45, 'Learning_Style': 'Reading/Writing', 'Feedback_Score': 1, 'Dropout_Likelihood': 'No'}
+2025-07-29 17:23:09,939 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:23:09,939 - INFO - Retrying request to /chat/completions in 0.411371 seconds
+2025-07-29 17:23:10,726 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:23:10,762 - INFO - Retrying request to /chat/completions in 0.960066 seconds
+2025-07-29 17:23:12,133 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:23:12,136 - ERROR - API error: RetryError[<Future at 0x1d9ea8ff1a0 state=finished raised RateLimitError>]
+2025-07-29 17:23:12,138 - INFO - 127.0.0.1 - - [29/Jul/2025 17:23:12] "POST /student HTTP/1.1" 200 -
+2025-07-29 17:24:11,071 - INFO - 127.0.0.1 - - [29/Jul/2025 17:24:11] "GET /management HTTP/1.1" 200 -
+2025-07-29 17:25:21,960 - INFO - Calling OpenAI with prompt: Provide managerial recommendations based on student data: {'Student_ID': 'S00003', 'Age': 20, 'Gender': 'Female', 'Education_Level': 'Undergraduate', 'Course_Name': 'Python Basics', 'Time_Spent_on_Videos': 217, 'Quiz_Attempts': 2, 'Quiz_Scores': 55, 'Forum_Participation': 2, 'Assignment_Completion_Rate': 67, 'Engagement_Level': 'Medium', 'Final_Exam_Score': 45, 'Learning_Style': 'Reading/Writing', 'Feedback_Score': 1, 'Dropout_Likelihood': 'No'}, context: {'Student_ID': 'S00003', 'Age': 20, 'Gender': 'Female', 'Education_Level': 'Undergraduate', 'Course_Name': 'Python Basics', 'Time_Spent_on_Videos': 217, 'Quiz_Attempts': 2, 'Quiz_Scores': 55, 'Forum_Participation': 2, 'Assignment_Completion_Rate': 67, 'Engagement_Level': 'Medium', 'Final_Exam_Score': 45, 'Learning_Style': 'Reading/Writing', 'Feedback_Score': 1, 'Dropout_Likelihood': 'No'}
+2025-07-29 17:25:22,523 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:25:22,524 - INFO - Retrying request to /chat/completions in 0.495980 seconds
+2025-07-29 17:25:23,401 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:25:23,402 - INFO - Retrying request to /chat/completions in 0.832222 seconds
+2025-07-29 17:25:24,606 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:25:28,607 - INFO - Calling OpenAI with prompt: Provide managerial recommendations based on student data: {'Student_ID': 'S00003', 'Age': 20, 'Gender': 'Female', 'Education_Level': 'Undergraduate', 'Course_Name': 'Python Basics', 'Time_Spent_on_Videos': 217, 'Quiz_Attempts': 2, 'Quiz_Scores': 55, 'Forum_Participation': 2, 'Assignment_Completion_Rate': 67, 'Engagement_Level': 'Medium', 'Final_Exam_Score': 45, 'Learning_Style': 'Reading/Writing', 'Feedback_Score': 1, 'Dropout_Likelihood': 'No'}, context: {'Student_ID': 'S00003', 'Age': 20, 'Gender': 'Female', 'Education_Level': 'Undergraduate', 'Course_Name': 'Python Basics', 'Time_Spent_on_Videos': 217, 'Quiz_Attempts': 2, 'Quiz_Scores': 55, 'Forum_Participation': 2, 'Assignment_Completion_Rate': 67, 'Engagement_Level': 'Medium', 'Final_Exam_Score': 45, 'Learning_Style': 'Reading/Writing', 'Feedback_Score': 1, 'Dropout_Likelihood': 'No'}
+2025-07-29 17:25:29,002 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:25:29,002 - INFO - Retrying request to /chat/completions in 0.474785 seconds
+2025-07-29 17:25:29,802 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:25:29,803 - INFO - Retrying request to /chat/completions in 0.886621 seconds
+2025-07-29 17:25:31,047 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:25:35,048 - INFO - Calling OpenAI with prompt: Provide managerial recommendations based on student data: {'Student_ID': 'S00003', 'Age': 20, 'Gender': 'Female', 'Education_Level': 'Undergraduate', 'Course_Name': 'Python Basics', 'Time_Spent_on_Videos': 217, 'Quiz_Attempts': 2, 'Quiz_Scores': 55, 'Forum_Participation': 2, 'Assignment_Completion_Rate': 67, 'Engagement_Level': 'Medium', 'Final_Exam_Score': 45, 'Learning_Style': 'Reading/Writing', 'Feedback_Score': 1, 'Dropout_Likelihood': 'No'}, context: {'Student_ID': 'S00003', 'Age': 20, 'Gender': 'Female', 'Education_Level': 'Undergraduate', 'Course_Name': 'Python Basics', 'Time_Spent_on_Videos': 217, 'Quiz_Attempts': 2, 'Quiz_Scores': 55, 'Forum_Participation': 2, 'Assignment_Completion_Rate': 67, 'Engagement_Level': 'Medium', 'Final_Exam_Score': 45, 'Learning_Style': 'Reading/Writing', 'Feedback_Score': 1, 'Dropout_Likelihood': 'No'}
+2025-07-29 17:25:35,425 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:25:35,425 - INFO - Retrying request to /chat/completions in 0.425013 seconds
+2025-07-29 17:25:36,237 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:25:36,238 - INFO - Retrying request to /chat/completions in 0.754222 seconds
+2025-07-29 17:25:37,327 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:25:37,329 - ERROR - API error: RetryError[<Future at 0x1d9eaf01250 state=finished raised RateLimitError>]
+2025-07-29 17:25:37,790 - INFO - 127.0.0.1 - - [29/Jul/2025 17:25:37] "POST /management HTTP/1.1" 200 -
+2025-07-29 17:26:31,310 - INFO - 127.0.0.1 - - [29/Jul/2025 17:26:31] "GET /student HTTP/1.1" 200 -
+2025-07-29 17:26:51,011 - INFO - Calling OpenAI with prompt: Provide study tips for a student with learning style Reading/Writing and performance metrics: {'Student_ID': 'S00003', 'Age': 20, 'Gender': 'Female', 'Education_Level': 'Undergraduate', 'Course_Name': 'Python Basics', 'Time_Spent_on_Videos': 217, 'Quiz_Attempts': 2, 'Quiz_Scores': 55, 'Forum_Participation': 2, 'Assignment_Completion_Rate': 67, 'Engagement_Level': 'Medium', 'Final_Exam_Score': 45, 'Learning_Style': 'Reading/Writing', 'Feedback_Score': 1, 'Dropout_Likelihood': 'No'}, context: {'Student_ID': 'S00003', 'Age': 20, 'Gender': 'Female', 'Education_Level': 'Undergraduate', 'Course_Name': 'Python Basics', 'Time_Spent_on_Videos': 217, 'Quiz_Attempts': 2, 'Quiz_Scores': 55, 'Forum_Participation': 2, 'Assignment_Completion_Rate': 67, 'Engagement_Level': 'Medium', 'Final_Exam_Score': 45, 'Learning_Style': 'Reading/Writing', 'Feedback_Score': 1, 'Dropout_Likelihood': 'No'}
+2025-07-29 17:26:51,885 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:26:51,886 - INFO - Retrying request to /chat/completions in 0.433185 seconds
+2025-07-29 17:26:52,727 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:26:52,728 - INFO - Retrying request to /chat/completions in 0.803063 seconds
+2025-07-29 17:26:53,923 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:26:57,925 - INFO - Calling OpenAI with prompt: Provide study tips for a student with learning style Reading/Writing and performance metrics: {'Student_ID': 'S00003', 'Age': 20, 'Gender': 'Female', 'Education_Level': 'Undergraduate', 'Course_Name': 'Python Basics', 'Time_Spent_on_Videos': 217, 'Quiz_Attempts': 2, 'Quiz_Scores': 55, 'Forum_Participation': 2, 'Assignment_Completion_Rate': 67, 'Engagement_Level': 'Medium', 'Final_Exam_Score': 45, 'Learning_Style': 'Reading/Writing', 'Feedback_Score': 1, 'Dropout_Likelihood': 'No'}, context: {'Student_ID': 'S00003', 'Age': 20, 'Gender': 'Female', 'Education_Level': 'Undergraduate', 'Course_Name': 'Python Basics', 'Time_Spent_on_Videos': 217, 'Quiz_Attempts': 2, 'Quiz_Scores': 55, 'Forum_Participation': 2, 'Assignment_Completion_Rate': 67, 'Engagement_Level': 'Medium', 'Final_Exam_Score': 45, 'Learning_Style': 'Reading/Writing', 'Feedback_Score': 1, 'Dropout_Likelihood': 'No'}
+2025-07-29 17:26:58,683 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:26:58,684 - INFO - Retrying request to /chat/completions in 0.398121 seconds
+2025-07-29 17:26:59,469 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:26:59,470 - INFO - Retrying request to /chat/completions in 0.789520 seconds
+2025-07-29 17:27:00,750 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:27:04,753 - INFO - Calling OpenAI with prompt: Provide study tips for a student with learning style Reading/Writing and performance metrics: {'Student_ID': 'S00003', 'Age': 20, 'Gender': 'Female', 'Education_Level': 'Undergraduate', 'Course_Name': 'Python Basics', 'Time_Spent_on_Videos': 217, 'Quiz_Attempts': 2, 'Quiz_Scores': 55, 'Forum_Participation': 2, 'Assignment_Completion_Rate': 67, 'Engagement_Level': 'Medium', 'Final_Exam_Score': 45, 'Learning_Style': 'Reading/Writing', 'Feedback_Score': 1, 'Dropout_Likelihood': 'No'}, context: {'Student_ID': 'S00003', 'Age': 20, 'Gender': 'Female', 'Education_Level': 'Undergraduate', 'Course_Name': 'Python Basics', 'Time_Spent_on_Videos': 217, 'Quiz_Attempts': 2, 'Quiz_Scores': 55, 'Forum_Participation': 2, 'Assignment_Completion_Rate': 67, 'Engagement_Level': 'Medium', 'Final_Exam_Score': 45, 'Learning_Style': 'Reading/Writing', 'Feedback_Score': 1, 'Dropout_Likelihood': 'No'}
+2025-07-29 17:27:05,234 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:27:05,235 - INFO - Retrying request to /chat/completions in 0.399287 seconds
+2025-07-29 17:27:06,003 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:27:06,004 - INFO - Retrying request to /chat/completions in 0.900285 seconds
+2025-07-29 17:27:07,321 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:27:07,322 - ERROR - API error: RetryError[<Future at 0x1d9eaf01640 state=finished raised RateLimitError>]
+2025-07-29 17:27:07,323 - INFO - 127.0.0.1 - - [29/Jul/2025 17:27:07] "POST /student HTTP/1.1" 200 -
+2025-07-29 17:28:42,140 - INFO - 127.0.0.1 - - [29/Jul/2025 17:28:42] "GET /management HTTP/1.1" 200 -
+2025-07-29 17:28:59,395 - INFO - Calling OpenAI with prompt: Provide managerial recommendations based on student data: {'Student_ID': 'S00003', 'Age': 20, 'Gender': 'Female', 'Education_Level': 'Undergraduate', 'Course_Name': 'Python Basics', 'Time_Spent_on_Videos': 217, 'Quiz_Attempts': 2, 'Quiz_Scores': 55, 'Forum_Participation': 2, 'Assignment_Completion_Rate': 67, 'Engagement_Level': 'Medium', 'Final_Exam_Score': 45, 'Learning_Style': 'Reading/Writing', 'Feedback_Score': 1, 'Dropout_Likelihood': 'No'}, context: {'Student_ID': 'S00003', 'Age': 20, 'Gender': 'Female', 'Education_Level': 'Undergraduate', 'Course_Name': 'Python Basics', 'Time_Spent_on_Videos': 217, 'Quiz_Attempts': 2, 'Quiz_Scores': 55, 'Forum_Participation': 2, 'Assignment_Completion_Rate': 67, 'Engagement_Level': 'Medium', 'Final_Exam_Score': 45, 'Learning_Style': 'Reading/Writing', 'Feedback_Score': 1, 'Dropout_Likelihood': 'No'}
+2025-07-29 17:29:00,207 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:29:00,208 - INFO - Retrying request to /chat/completions in 0.403400 seconds
+2025-07-29 17:29:01,026 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:29:01,027 - INFO - Retrying request to /chat/completions in 0.979252 seconds
+2025-07-29 17:29:02,475 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:29:06,477 - INFO - Calling OpenAI with prompt: Provide managerial recommendations based on student data: {'Student_ID': 'S00003', 'Age': 20, 'Gender': 'Female', 'Education_Level': 'Undergraduate', 'Course_Name': 'Python Basics', 'Time_Spent_on_Videos': 217, 'Quiz_Attempts': 2, 'Quiz_Scores': 55, 'Forum_Participation': 2, 'Assignment_Completion_Rate': 67, 'Engagement_Level': 'Medium', 'Final_Exam_Score': 45, 'Learning_Style': 'Reading/Writing', 'Feedback_Score': 1, 'Dropout_Likelihood': 'No'}, context: {'Student_ID': 'S00003', 'Age': 20, 'Gender': 'Female', 'Education_Level': 'Undergraduate', 'Course_Name': 'Python Basics', 'Time_Spent_on_Videos': 217, 'Quiz_Attempts': 2, 'Quiz_Scores': 55, 'Forum_Participation': 2, 'Assignment_Completion_Rate': 67, 'Engagement_Level': 'Medium', 'Final_Exam_Score': 45, 'Learning_Style': 'Reading/Writing', 'Feedback_Score': 1, 'Dropout_Likelihood': 'No'}
+2025-07-29 17:29:06,994 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:29:06,995 - INFO - Retrying request to /chat/completions in 0.452959 seconds
+2025-07-29 17:29:07,881 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:29:07,882 - INFO - Retrying request to /chat/completions in 0.894409 seconds
+2025-07-29 17:29:09,194 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:29:13,220 - INFO - Calling OpenAI with prompt: Provide managerial recommendations based on student data: {'Student_ID': 'S00003', 'Age': 20, 'Gender': 'Female', 'Education_Level': 'Undergraduate', 'Course_Name': 'Python Basics', 'Time_Spent_on_Videos': 217, 'Quiz_Attempts': 2, 'Quiz_Scores': 55, 'Forum_Participation': 2, 'Assignment_Completion_Rate': 67, 'Engagement_Level': 'Medium', 'Final_Exam_Score': 45, 'Learning_Style': 'Reading/Writing', 'Feedback_Score': 1, 'Dropout_Likelihood': 'No'}, context: {'Student_ID': 'S00003', 'Age': 20, 'Gender': 'Female', 'Education_Level': 'Undergraduate', 'Course_Name': 'Python Basics', 'Time_Spent_on_Videos': 217, 'Quiz_Attempts': 2, 'Quiz_Scores': 55, 'Forum_Participation': 2, 'Assignment_Completion_Rate': 67, 'Engagement_Level': 'Medium', 'Final_Exam_Score': 45, 'Learning_Style': 'Reading/Writing', 'Feedback_Score': 1, 'Dropout_Likelihood': 'No'}
+2025-07-29 17:29:14,057 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:29:14,058 - INFO - Retrying request to /chat/completions in 0.491453 seconds
+2025-07-29 17:29:15,012 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:29:15,013 - INFO - Retrying request to /chat/completions in 0.999188 seconds
+2025-07-29 17:29:16,441 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:29:16,441 - ERROR - API error: RetryError[<Future at 0x1d9eaf29d90 state=finished raised RateLimitError>]
+2025-07-29 17:29:16,661 - INFO - 127.0.0.1 - - [29/Jul/2025 17:29:16] "POST /management HTTP/1.1" 200 -
+2025-07-29 17:43:13,427 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-29 17:43:13,427 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-29 17:43:13,661 - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-29 17:43:21,662 - WARNING -  * Debugger is active!
+2025-07-29 17:43:21,678 - INFO -  * Debugger PIN: 128-884-529
+2025-07-29 17:43:41,601 - INFO - 127.0.0.1 - - [29/Jul/2025 17:43:41] "GET / HTTP/1.1" 200 -
+2025-07-29 17:43:54,988 - INFO - 127.0.0.1 - - [29/Jul/2025 17:43:54] "GET /student HTTP/1.1" 200 -
+2025-07-29 17:44:02,880 - INFO - Calling OpenAI with prompt: [Recommendation] Provide study tips for a student with learning style Reading/Writing and performance metrics: {'Student_ID': 'S00003', 'Age': 20, 'Gender': 'Female', 'Education_Level': 'Undergraduate', 'Course_Name': 'Python Basics', 'Time_Spent_on_Videos': 217, 'Quiz_Attempts': 2, 'Quiz_Scores': 55, 'Forum_Participation': 2, 'Assignment_Completion_Rate': 67, 'Engagement_Level': 'Medium', 'Final_Exam_Score': 45, 'Learning_Style': 'Reading/Writing', 'Feedback_Score': 1, 'Dropout_Likelihood': 'No'}
+[Answer] study tips, context: {'Student_ID': 'S00003', 'Age': 20, 'Gender': 'Female', 'Education_Level': 'Undergraduate', 'Course_Name': 'Python Basics', 'Time_Spent_on_Videos': 217, 'Quiz_Attempts': 2, 'Quiz_Scores': 55, 'Forum_Participation': 2, 'Assignment_Completion_Rate': 67, 'Engagement_Level': 'Medium', 'Final_Exam_Score': 45, 'Learning_Style': 'Reading/Writing', 'Feedback_Score': 1, 'Dropout_Likelihood': 'No'}
+2025-07-29 17:44:07,570 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:44:07,571 - INFO - Retrying request to /chat/completions in 0.491571 seconds
+2025-07-29 17:44:08,434 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:44:08,435 - INFO - Retrying request to /chat/completions in 0.781866 seconds
+2025-07-29 17:44:09,555 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:44:13,558 - INFO - Calling OpenAI with prompt: [Recommendation] Provide study tips for a student with learning style Reading/Writing and performance metrics: {'Student_ID': 'S00003', 'Age': 20, 'Gender': 'Female', 'Education_Level': 'Undergraduate', 'Course_Name': 'Python Basics', 'Time_Spent_on_Videos': 217, 'Quiz_Attempts': 2, 'Quiz_Scores': 55, 'Forum_Participation': 2, 'Assignment_Completion_Rate': 67, 'Engagement_Level': 'Medium', 'Final_Exam_Score': 45, 'Learning_Style': 'Reading/Writing', 'Feedback_Score': 1, 'Dropout_Likelihood': 'No'}
+[Answer] study tips, context: {'Student_ID': 'S00003', 'Age': 20, 'Gender': 'Female', 'Education_Level': 'Undergraduate', 'Course_Name': 'Python Basics', 'Time_Spent_on_Videos': 217, 'Quiz_Attempts': 2, 'Quiz_Scores': 55, 'Forum_Participation': 2, 'Assignment_Completion_Rate': 67, 'Engagement_Level': 'Medium', 'Final_Exam_Score': 45, 'Learning_Style': 'Reading/Writing', 'Feedback_Score': 1, 'Dropout_Likelihood': 'No'}
+2025-07-29 17:44:14,462 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:44:14,463 - INFO - Retrying request to /chat/completions in 0.430048 seconds
+2025-07-29 17:44:15,353 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:44:15,354 - INFO - Retrying request to /chat/completions in 0.924533 seconds
+2025-07-29 17:44:16,669 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:44:20,673 - INFO - Calling OpenAI with prompt: [Recommendation] Provide study tips for a student with learning style Reading/Writing and performance metrics: {'Student_ID': 'S00003', 'Age': 20, 'Gender': 'Female', 'Education_Level': 'Undergraduate', 'Course_Name': 'Python Basics', 'Time_Spent_on_Videos': 217, 'Quiz_Attempts': 2, 'Quiz_Scores': 55, 'Forum_Participation': 2, 'Assignment_Completion_Rate': 67, 'Engagement_Level': 'Medium', 'Final_Exam_Score': 45, 'Learning_Style': 'Reading/Writing', 'Feedback_Score': 1, 'Dropout_Likelihood': 'No'}
+[Answer] study tips, context: {'Student_ID': 'S00003', 'Age': 20, 'Gender': 'Female', 'Education_Level': 'Undergraduate', 'Course_Name': 'Python Basics', 'Time_Spent_on_Videos': 217, 'Quiz_Attempts': 2, 'Quiz_Scores': 55, 'Forum_Participation': 2, 'Assignment_Completion_Rate': 67, 'Engagement_Level': 'Medium', 'Final_Exam_Score': 45, 'Learning_Style': 'Reading/Writing', 'Feedback_Score': 1, 'Dropout_Likelihood': 'No'}
+2025-07-29 17:44:21,077 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:44:21,078 - INFO - Retrying request to /chat/completions in 0.380849 seconds
+2025-07-29 17:44:21,900 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:44:21,901 - INFO - Retrying request to /chat/completions in 0.913862 seconds
+2025-07-29 17:44:23,186 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:44:23,188 - ERROR - API error: RetryError[<Future at 0x2236ed84440 state=finished raised RateLimitError>]
+2025-07-29 17:44:23,190 - INFO - 127.0.0.1 - - [29/Jul/2025 17:44:23] "POST /student HTTP/1.1" 200 -
+2025-07-29 17:44:48,708 - INFO - 127.0.0.1 - - [29/Jul/2025 17:44:48] "GET /management HTTP/1.1" 200 -
+2025-07-29 17:45:46,382 - INFO - Calling OpenAI with prompt: [Recommendation] Provide managerial recommendations based on student data: {'Student_ID': 'S00003', 'Age': 20, 'Gender': 'Female', 'Education_Level': 'Undergraduate', 'Course_Name': 'Python Basics', 'Time_Spent_on_Videos': 217, 'Quiz_Attempts': 2, 'Quiz_Scores': 55, 'Forum_Participation': 2, 'Assignment_Completion_Rate': 67, 'Engagement_Level': 'Medium', 'Final_Exam_Score': 45, 'Learning_Style': 'Reading/Writing', 'Feedback_Score': 1, 'Dropout_Likelihood': 'No'}, context: {'Student_ID': 'S00003', 'Age': 20, 'Gender': 'Female', 'Education_Level': 'Undergraduate', 'Course_Name': 'Python Basics', 'Time_Spent_on_Videos': 217, 'Quiz_Attempts': 2, 'Quiz_Scores': 55, 'Forum_Participation': 2, 'Assignment_Completion_Rate': 67, 'Engagement_Level': 'Medium', 'Final_Exam_Score': 45, 'Learning_Style': 'Reading/Writing', 'Feedback_Score': 1, 'Dropout_Likelihood': 'No'}
+2025-07-29 17:45:47,062 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:45:47,063 - INFO - Retrying request to /chat/completions in 0.391774 seconds
+2025-07-29 17:45:48,082 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:45:48,083 - INFO - Retrying request to /chat/completions in 0.819511 seconds
+2025-07-29 17:45:49,222 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:45:53,225 - INFO - Calling OpenAI with prompt: [Recommendation] Provide managerial recommendations based on student data: {'Student_ID': 'S00003', 'Age': 20, 'Gender': 'Female', 'Education_Level': 'Undergraduate', 'Course_Name': 'Python Basics', 'Time_Spent_on_Videos': 217, 'Quiz_Attempts': 2, 'Quiz_Scores': 55, 'Forum_Participation': 2, 'Assignment_Completion_Rate': 67, 'Engagement_Level': 'Medium', 'Final_Exam_Score': 45, 'Learning_Style': 'Reading/Writing', 'Feedback_Score': 1, 'Dropout_Likelihood': 'No'}, context: {'Student_ID': 'S00003', 'Age': 20, 'Gender': 'Female', 'Education_Level': 'Undergraduate', 'Course_Name': 'Python Basics', 'Time_Spent_on_Videos': 217, 'Quiz_Attempts': 2, 'Quiz_Scores': 55, 'Forum_Participation': 2, 'Assignment_Completion_Rate': 67, 'Engagement_Level': 'Medium', 'Final_Exam_Score': 45, 'Learning_Style': 'Reading/Writing', 'Feedback_Score': 1, 'Dropout_Likelihood': 'No'}
+2025-07-29 17:45:53,595 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:45:53,596 - INFO - Retrying request to /chat/completions in 0.378100 seconds
+2025-07-29 17:45:54,353 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:45:54,354 - INFO - Retrying request to /chat/completions in 0.981370 seconds
+2025-07-29 17:45:55,674 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:45:59,677 - INFO - Calling OpenAI with prompt: [Recommendation] Provide managerial recommendations based on student data: {'Student_ID': 'S00003', 'Age': 20, 'Gender': 'Female', 'Education_Level': 'Undergraduate', 'Course_Name': 'Python Basics', 'Time_Spent_on_Videos': 217, 'Quiz_Attempts': 2, 'Quiz_Scores': 55, 'Forum_Participation': 2, 'Assignment_Completion_Rate': 67, 'Engagement_Level': 'Medium', 'Final_Exam_Score': 45, 'Learning_Style': 'Reading/Writing', 'Feedback_Score': 1, 'Dropout_Likelihood': 'No'}, context: {'Student_ID': 'S00003', 'Age': 20, 'Gender': 'Female', 'Education_Level': 'Undergraduate', 'Course_Name': 'Python Basics', 'Time_Spent_on_Videos': 217, 'Quiz_Attempts': 2, 'Quiz_Scores': 55, 'Forum_Participation': 2, 'Assignment_Completion_Rate': 67, 'Engagement_Level': 'Medium', 'Final_Exam_Score': 45, 'Learning_Style': 'Reading/Writing', 'Feedback_Score': 1, 'Dropout_Likelihood': 'No'}
+2025-07-29 17:46:00,021 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:46:00,022 - INFO - Retrying request to /chat/completions in 0.461031 seconds
+2025-07-29 17:46:00,785 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:46:00,786 - INFO - Retrying request to /chat/completions in 0.979961 seconds
+2025-07-29 17:46:02,139 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-29 17:46:02,141 - ERROR - API error: RetryError[<Future at 0x2236f41d4f0 state=finished raised RateLimitError>]
+2025-07-29 17:46:02,430 - INFO - 127.0.0.1 - - [29/Jul/2025 17:46:02] "POST /management HTTP/1.1" 200 -
+2025-07-29 18:10:44,341 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-29 18:10:44,341 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-29 18:10:45,003 - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-29 18:11:00,289 - WARNING -  * Debugger is active!
+2025-07-29 18:11:00,324 - INFO -  * Debugger PIN: 128-884-529
+2025-07-29 18:11:02,626 - INFO - 127.0.0.1 - - [29/Jul/2025 18:11:02] "GET / HTTP/1.1" 200 -
+2025-07-29 18:11:25,412 - INFO - 127.0.0.1 - - [29/Jul/2025 18:11:25] "GET /student HTTP/1.1" 200 -
+2025-07-29 18:12:11,614 - ERROR - Error: The feature names should match those that were passed during fit.
+Feature names seen at fit time, yet now missing:
+- Recommendation
+
+2025-07-29 18:12:11,615 - INFO - 127.0.0.1 - - [29/Jul/2025 18:12:11] "POST /student HTTP/1.1" 200 -
+2025-07-29 18:13:08,849 - ERROR - Error: The feature names should match those that were passed during fit.
+Feature names seen at fit time, yet now missing:
+- Recommendation
+
+2025-07-29 18:13:08,849 - INFO - 127.0.0.1 - - [29/Jul/2025 18:13:08] "POST /student HTTP/1.1" 200 -
+2025-07-29 18:14:21,013 - INFO - 127.0.0.1 - - [29/Jul/2025 18:14:21] "GET /management HTTP/1.1" 200 -
+2025-07-29 18:15:12,203 - ERROR - Error: The feature names should match those that were passed during fit.
+Feature names seen at fit time, yet now missing:
+- Recommendation
+
+2025-07-29 18:15:12,504 - INFO - 127.0.0.1 - - [29/Jul/2025 18:15:12] "POST /management HTTP/1.1" 200 -
+2025-07-29 18:24:24,429 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-29 18:24:24,429 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-29 18:24:24,644 - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-29 18:24:37,452 - WARNING -  * Debugger is active!
+2025-07-29 18:24:37,460 - INFO -  * Debugger PIN: 128-884-529
+2025-07-29 18:24:40,612 - INFO - 127.0.0.1 - - [29/Jul/2025 18:24:40] "GET / HTTP/1.1" 200 -
+2025-07-29 18:24:53,234 - INFO - 127.0.0.1 - - [29/Jul/2025 18:24:53] "GET /student HTTP/1.1" 200 -
+2025-07-29 18:25:13,867 - INFO - 127.0.0.1 - - [29/Jul/2025 18:25:13] "POST /student HTTP/1.1" 200 -
+2025-07-29 18:25:45,937 - INFO - 127.0.0.1 - - [29/Jul/2025 18:25:45] "GET /management HTTP/1.1" 200 -
+2025-07-29 18:26:27,563 - INFO - 127.0.0.1 - - [29/Jul/2025 18:26:27] "POST /management HTTP/1.1" 200 -
+2025-07-29 20:37:34,561 - INFO - 127.0.0.1 - - [29/Jul/2025 20:37:34] "POST /management HTTP/1.1" 200 -
+2025-07-29 20:37:58,464 - INFO - 127.0.0.1 - - [29/Jul/2025 20:37:58] "POST /management HTTP/1.1" 200 -
+2025-07-29 20:38:34,995 - INFO - 127.0.0.1 - - [29/Jul/2025 20:38:34] "POST /management HTTP/1.1" 200 -
+2025-07-29 20:39:07,221 - INFO - 127.0.0.1 - - [29/Jul/2025 20:39:07] "POST /management HTTP/1.1" 200 -
+2025-07-29 20:39:40,160 - INFO - 127.0.0.1 - - [29/Jul/2025 20:39:40] "POST /management HTTP/1.1" 200 -
+2025-07-29 20:40:32,945 - INFO - 127.0.0.1 - - [29/Jul/2025 20:40:32] "POST /management HTTP/1.1" 200 -
+2025-07-29 20:42:20,122 - INFO - 127.0.0.1 - - [29/Jul/2025 20:42:20] "GET / HTTP/1.1" 200 -
+2025-07-29 21:00:06,389 - INFO - 127.0.0.1 - - [29/Jul/2025 21:00:06] "GET /student HTTP/1.1" 200 -
+2025-07-29 21:00:20,921 - INFO - 127.0.0.1 - - [29/Jul/2025 21:00:20] "POST /student HTTP/1.1" 200 -
+2025-07-29 21:24:23,571 - INFO -  * Detected change in 'C:\\Users\\EMMA\\.ipython\\learning_dashboard\\templates\\app.py', reloading
+2025-07-29 21:28:31,846 - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-29 21:32:10,649 - WARNING -  * Debugger is active!
+2025-07-29 21:32:11,425 - INFO -  * Debugger PIN: 128-884-529
+2025-07-29 21:36:34,739 - INFO -  * Detected change in 'C:\\Users\\EMMA\\.ipython\\learning_dashboard\\templates\\app.py', reloading
+2025-07-29 21:36:43,306 - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-29 21:37:37,334 - WARNING -  * Debugger is active!
+2025-07-29 21:37:37,346 - INFO -  * Debugger PIN: 128-884-529
+2025-07-29 21:44:41,639 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-29 21:44:41,672 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-29 21:44:41,872 - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-29 21:44:49,503 - WARNING -  * Debugger is active!
+2025-07-29 21:44:49,514 - INFO -  * Debugger PIN: 128-884-529
+2025-07-29 21:45:12,517 - INFO - 127.0.0.1 - - [29/Jul/2025 21:45:12] "GET / HTTP/1.1" 200 -
+2025-07-29 21:46:44,878 - INFO - 127.0.0.1 - - [29/Jul/2025 21:46:44] "GET /student HTTP/1.1" 200 -
+2025-07-29 21:47:19,828 - INFO - 127.0.0.1 - - [29/Jul/2025 21:47:19] "POST /student HTTP/1.1" 200 -
+2025-07-29 21:48:07,050 - INFO - 127.0.0.1 - - [29/Jul/2025 21:48:07] "GET /management HTTP/1.1" 200 -
+2025-07-29 21:49:24,732 - INFO - 127.0.0.1 - - [29/Jul/2025 21:49:24] "POST /management HTTP/1.1" 200 -
+2025-07-29 21:50:21,835 - INFO -  * Detected change in 'C:\\Users\\EMMA\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\logging\\__init__.py', reloading
+2025-07-29 21:50:31,832 - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-29 21:53:21,202 - WARNING -  * Debugger is active!
+2025-07-29 21:53:21,643 - INFO -  * Debugger PIN: 128-884-529
+2025-07-29 21:54:11,722 - INFO -  * Detected change in 'C:\\Users\\EMMA\\.ipython\\learning_dashboard\\app.py', reloading
+2025-07-29 21:58:26,926 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-29 21:58:26,926 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-29 21:58:26,994 - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-29 21:58:44,357 - WARNING -  * Debugger is active!
+2025-07-29 21:58:44,378 - INFO -  * Debugger PIN: 128-884-529
+2025-07-29 21:59:11,967 - INFO - 127.0.0.1 - - [29/Jul/2025 21:59:11] "GET / HTTP/1.1" 200 -
+2025-07-29 21:59:23,976 - INFO - 127.0.0.1 - - [29/Jul/2025 21:59:23] "GET /student HTTP/1.1" 200 -
+2025-07-29 22:00:07,002 - INFO - 127.0.0.1 - - [29/Jul/2025 22:00:07] "POST /student HTTP/1.1" 200 -
+2025-07-29 22:00:50,507 - INFO - 127.0.0.1 - - [29/Jul/2025 22:00:50] "GET /management HTTP/1.1" 200 -
+2025-07-29 22:01:56,276 - INFO - 127.0.0.1 - - [29/Jul/2025 22:01:56] "POST /management HTTP/1.1" 200 -
+2025-07-29 22:02:09,829 - INFO - 127.0.0.1 - - [29/Jul/2025 22:02:09] "POST /management HTTP/1.1" 200 -
+2025-07-29 22:02:33,879 - INFO - 127.0.0.1 - - [29/Jul/2025 22:02:33] "POST /management HTTP/1.1" 200 -
+2025-07-29 22:05:38,885 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-29 22:05:38,885 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-29 22:05:38,925 - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-29 22:05:49,251 - WARNING -  * Debugger is active!
+2025-07-29 22:05:49,261 - INFO -  * Debugger PIN: 128-884-529
+2025-07-29 22:05:54,692 - INFO - 127.0.0.1 - - [29/Jul/2025 22:05:54] "GET / HTTP/1.1" 200 -
+2025-07-29 22:06:05,959 - INFO - 127.0.0.1 - - [29/Jul/2025 22:06:05] "GET /student HTTP/1.1" 200 -
+2025-07-29 22:06:15,787 - INFO - 127.0.0.1 - - [29/Jul/2025 22:06:15] "POST /student HTTP/1.1" 200 -
+2025-07-29 22:19:58,825 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-29 22:19:58,825 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-29 22:19:58,991 - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-29 22:20:08,256 - WARNING -  * Debugger is active!
+2025-07-29 22:20:08,267 - INFO -  * Debugger PIN: 128-884-529
+2025-07-29 22:20:12,276 - INFO - 127.0.0.1 - - [29/Jul/2025 22:20:12] "GET / HTTP/1.1" 200 -
+2025-07-29 22:21:14,307 - INFO - 127.0.0.1 - - [29/Jul/2025 22:21:14] "GET /student HTTP/1.1" 200 -
+2025-07-29 22:22:07,242 - INFO - 127.0.0.1 - - [29/Jul/2025 22:22:07] "POST /student HTTP/1.1" 200 -
+2025-07-29 22:23:19,440 - INFO - 127.0.0.1 - - [29/Jul/2025 22:23:19] "GET /management HTTP/1.1" 200 -
+2025-07-29 22:24:30,539 - INFO - 127.0.0.1 - - [29/Jul/2025 22:24:30] "POST /management HTTP/1.1" 200 -
+2025-07-29 22:25:21,683 - INFO - 127.0.0.1 - - [29/Jul/2025 22:25:21] "GET / HTTP/1.1" 200 -
+2025-07-29 22:25:21,693 - INFO - 127.0.0.1 - - [29/Jul/2025 22:25:21] "GET / HTTP/1.1" 200 -
+2025-07-29 22:50:45,558 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-29 22:50:45,594 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-29 22:50:46,015 - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-29 22:51:00,757 - WARNING -  * Debugger is active!
+2025-07-29 22:51:02,172 - INFO -  * Debugger PIN: 128-884-529
+2025-07-29 22:51:03,033 - INFO - 127.0.0.1 - - [29/Jul/2025 22:51:03] "GET / HTTP/1.1" 200 -
+2025-07-29 23:07:58,255 - INFO - 127.0.0.1 - - [29/Jul/2025 23:07:58] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-07-29 23:07:58,266 - INFO - 127.0.0.1 - - [29/Jul/2025 23:07:58] "GET /student?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
